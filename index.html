@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hypervision | Modern Renovation & Smart Spaces</title>
+    <title>Hypervision | Rénovation premium, smart building & GTB</title>
     <meta
       name="description"
-      content="Hypervision delivers premium renovation integrated with smart building and smart home technologies for homes and professional spaces."
+      content="Hypervision combine rénovation premium, technologies intelligentes, domotique, GTB/GTC et assistance EBO pour transformer logements et espaces professionnels."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,13 +20,20 @@
     <header class="site-header">
       <nav class="container nav">
         <a href="#home" class="brand">Hypervision</a>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-actions">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button class="lang-btn is-active" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="navAbout">À propos</a></li>
+          <li><a href="#services" data-i18n="navServices">Services</a></li>
+          <li><a href="#ebo" data-i18n="navEbo">EBO / GTB</a></li>
+          <li><a href="#process" data-i18n="navProcess">Méthode</a></li>
+          <li><a href="#projects" data-i18n="navProjects">Projets</a></li>
+          <li><a href="#contact" data-i18n="navContact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -35,39 +42,38 @@
       <section class="hero section">
         <div class="container hero-grid">
           <div class="hero-content reveal">
-            <p class="eyebrow">Premium Renovation + Smart Technology</p>
-            <h1>Modern Renovation. Smart Spaces.</h1>
-            <p class="subtitle">
-              Hypervision transforms homes and professional spaces with high-quality
-              renovation and integrated smart technologies.
+            <p class="eyebrow" data-i18n="heroEyebrow">Rénovation premium + technologies intelligentes</p>
+            <h1 data-i18n="heroTitle">Rénovation moderne. Espaces intelligents.</h1>
+            <p class="subtitle" data-i18n="heroSubtitle">
+              Hypervision transforme les logements et espaces professionnels grâce à une rénovation de qualité et à l’intégration de technologies intelligentes.
             </p>
             <div class="hero-cta">
-              <a href="#contact" class="btn btn-primary">Request a quote</a>
-              <a href="#services" class="btn btn-secondary">Discover our solutions</a>
+              <a href="#contact" class="btn btn-primary" data-i18n="heroCtaPrimary">Demander un devis</a>
+              <a href="#services" class="btn btn-secondary" data-i18n="heroCtaSecondary">Découvrir nos solutions</a>
             </div>
           </div>
           <div class="hero-visual reveal">
             <div class="dashboard-card">
               <div class="dashboard-header">
-                <span>Building supervision</span>
-                <span class="status">Live</span>
+                <span data-i18n="dashboardTitle">Supervision bâtiment</span>
+                <span class="status" data-i18n="dashboardLive">En direct</span>
               </div>
               <div class="metrics-grid">
                 <article>
-                  <h3>Lighting</h3>
-                  <p>Automated by zone</p>
+                  <h3 data-i18n="metricLight">Éclairage</h3>
+                  <p data-i18n="metricLightText">Scénarios intelligents par zone</p>
                 </article>
                 <article>
-                  <h3>Heating</h3>
-                  <p>Adaptive optimization</p>
+                  <h3 data-i18n="metricHeat">Chauffage</h3>
+                  <p data-i18n="metricHeatText">Régulation adaptative</p>
                 </article>
                 <article>
-                  <h3>Energy</h3>
-                  <p>-28% monthly usage</p>
+                  <h3 data-i18n="metricEnergy">Énergie</h3>
+                  <p data-i18n="metricEnergyText">Optimisation en continu</p>
                 </article>
                 <article>
-                  <h3>Security</h3>
-                  <p>Connected access</p>
+                  <h3 data-i18n="metricAccess">Accès</h3>
+                  <p data-i18n="metricAccessText">Contrôle connecté</p>
                 </article>
               </div>
             </div>
@@ -77,12 +83,9 @@
 
       <section id="about" class="section about">
         <div class="container reveal">
-          <h2>Renovation, design and intelligence in one execution.</h2>
-          <p>
-            Hypervision combines architectural renovation, interior design,
-            automation engineering and supervision systems to deliver complete,
-            high-performance spaces. Every project is designed to be elegant,
-            comfortable, connected and energy-efficient.
+          <h2 data-i18n="aboutTitle">Une expertise complète: rénovation, design, automatisme et GTB.</h2>
+          <p data-i18n="aboutText">
+            Hypervision combine rénovation intérieure, design fonctionnel, domotique, supervision technique et technologies smart building. Notre objectif est de créer des espaces esthétiques, confortables, connectés, performants sur le plan énergétique et prêts pour les usages futurs.
           </p>
         </div>
       </section>
@@ -90,64 +93,94 @@
       <section id="services" class="section services">
         <div class="container">
           <div class="section-heading reveal">
-            <h2>Our smart renovation services</h2>
-            <p>
-              We deliver full-scope modernization projects that combine premium
-              construction quality with future-ready digital systems.
+            <h2 data-i18n="servicesTitle">Nos services de rénovation intelligente</h2>
+            <p data-i18n="servicesSubtitle">
+              Nous réalisons des projets haut de gamme qui associent qualité d’exécution, automatisation et supervision technique.
             </p>
           </div>
           <div class="card-grid services-grid">
             <article class="card reveal">
               <div class="icon">🏗️</div>
-              <h3>Interior renovation</h3>
-              <p>Premium transformation of residential and professional interiors.</p>
+              <h3 data-i18n="service1Title">Rénovation intérieure</h3>
+              <p data-i18n="service1Text">Transformation premium des espaces résidentiels et professionnels.</p>
             </article>
             <article class="card reveal">
               <div class="icon">💡</div>
-              <h3>Smart lighting control</h3>
-              <p>Scene-based lighting automation for comfort, design and efficiency.</p>
+              <h3 data-i18n="service2Title">Éclairage intelligent</h3>
+              <p data-i18n="service2Text">Pilotage lumineux par scénarios pour le confort et l’efficacité.</p>
             </article>
             <article class="card reveal">
               <div class="icon">🌡️</div>
-              <h3>Heating and energy optimization</h3>
-              <p>Intelligent thermal management to reduce consumption and improve comfort.</p>
+              <h3 data-i18n="service3Title">Régulation chauffage et optimisation énergétique</h3>
+              <p data-i18n="service3Text">Gestion thermique intelligente pour améliorer la performance énergétique.</p>
             </article>
             <article class="card reveal">
               <div class="icon">🧠</div>
-              <h3>Home/building automation</h3>
-              <p>Connected control of systems, routines and equipment across the space.</p>
+              <h3 data-i18n="service4Title">Domotique et automatisme bâtiment</h3>
+              <p data-i18n="service4Text">Automatisation des fonctions clés pour un usage fluide et moderne.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon">🏢</div>
+              <h3 data-i18n="service5Title">Supervision GTB / GTC</h3>
+              <p data-i18n="service5Text">Vision centralisée des équipements techniques et des performances.</p>
             </article>
             <article class="card reveal">
               <div class="icon">📊</div>
-              <h3>Supervision interfaces and dashboards</h3>
-              <p>Clear visual monitoring for real-time control and operational insight.</p>
+              <h3 data-i18n="service6Title">Interfaces graphiques et tableaux de bord</h3>
+              <p data-i18n="service6Text">Synoptiques modernes et dashboards clairs pour piloter vos installations.</p>
             </article>
             <article class="card reveal">
               <div class="icon">🔐</div>
-              <h3>Connected security and access control</h3>
-              <p>Secure, modern entry and surveillance solutions integrated into your project.</p>
+              <h3 data-i18n="service7Title">Sécurité connectée et contrôle d’accès</h3>
+              <p data-i18n="service7Text">Gestion sécurisée des accès et de la supervision de sûreté.</p>
             </article>
-            <article class="card reveal">
-              <div class="icon">🛠️</div>
-              <h3>Technical support and integration</h3>
-              <p>Long-term support, upgrades and system interoperability management.</p>
+            <article class="card reveal service-highlight">
+              <div class="icon">⚙️</div>
+              <h3 data-i18n="service8Title">Programmation EBO et assistance technique GTB</h3>
+              <p data-i18n="service8Text">Support expert pour les entreprises sur les projets EBO, automatisme et supervision.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section id="ebo" class="section ebo-section">
+        <div class="container ebo-wrap reveal">
+          <div>
+            <p class="eyebrow" data-i18n="eboEyebrow">Service dédié entreprises</p>
+            <h2 data-i18n="eboTitle">Programmation EBO et assistance GTB pour les entreprises</h2>
+            <p data-i18n="eboText">
+              Hypervision accompagne les entreprises, intégrateurs et bureaux techniques dans leurs projets de supervision et d’automatisation bâtiment. Nous pouvons intervenir sur la programmation EBO, la création de synoptiques, l’intégration BACnet/Modbus, l’analyse des points, les alarmes, les commandes, les tests et la mise en service.
+            </p>
+            <a href="#contact" class="btn btn-primary" data-i18n="eboCta">Nous contacter pour une assistance technique</a>
+          </div>
+          <ul class="ebo-list">
+            <li data-i18n="eboItem1">Programmation EBO</li>
+            <li data-i18n="eboItem2">Création et modification de synoptiques</li>
+            <li data-i18n="eboItem3">Intégration BACnet et Modbus</li>
+            <li data-i18n="eboItem4">Analyse des listes de points</li>
+            <li data-i18n="eboItem5">Support d’analyse fonctionnelle</li>
+            <li data-i18n="eboItem6">Configuration d’alarmes</li>
+            <li data-i18n="eboItem7">Logiques de commande et statuts</li>
+            <li data-i18n="eboItem8">Support tests et mise en service</li>
+            <li data-i18n="eboItem9">Dépannage et assistance technique</li>
+            <li data-i18n="eboItem10">Support projets automatisme et supervision</li>
+          </ul>
         </div>
       </section>
 
       <section class="section why">
         <div class="container">
           <div class="section-heading reveal">
-            <h2>Why choose Hypervision</h2>
+            <h2 data-i18n="whyTitle">Pourquoi choisir Hypervision</h2>
           </div>
           <ul class="check-list reveal">
-            <li>Modern and premium approach</li>
-            <li>Technical expertise in smart systems</li>
-            <li>Custom solutions for each client</li>
-            <li>Clean design and professional execution</li>
-            <li>Energy efficiency and comfort</li>
-            <li>Future-ready installations</li>
+            <li data-i18n="why1">Approche moderne et premium</li>
+            <li data-i18n="why2">Expertise en rénovation et technologies intelligentes</li>
+            <li data-i18n="why3">Compétences en GTB, supervision et automatisme</li>
+            <li data-i18n="why4">Solutions personnalisées</li>
+            <li data-i18n="why5">Design propre et professionnel</li>
+            <li data-i18n="why6">Confort, performance énergétique et évolutivité</li>
+            <li data-i18n="why7">Assistance technique pour entreprises</li>
           </ul>
         </div>
       </section>
@@ -155,15 +188,15 @@
       <section id="process" class="section process">
         <div class="container">
           <div class="section-heading reveal">
-            <h2>Our project process</h2>
+            <h2 data-i18n="processTitle">Notre méthode projet</h2>
           </div>
           <ol class="timeline">
-            <li class="reveal"><span>1</span>Consultation</li>
-            <li class="reveal"><span>2</span>Technical analysis</li>
-            <li class="reveal"><span>3</span>Design proposal</li>
-            <li class="reveal"><span>4</span>Renovation and integration</li>
-            <li class="reveal"><span>5</span>Testing and handover</li>
-            <li class="reveal"><span>6</span>Support</li>
+            <li class="reveal"><span>1</span><span data-i18n="process1">Échange et compréhension du besoin</span></li>
+            <li class="reveal"><span>2</span><span data-i18n="process2">Analyse technique</span></li>
+            <li class="reveal"><span>3</span><span data-i18n="process3">Proposition de solution</span></li>
+            <li class="reveal"><span>4</span><span data-i18n="process4">Rénovation et intégration</span></li>
+            <li class="reveal"><span>5</span><span data-i18n="process5">Programmation et configuration</span></li>
+            <li class="reveal"><span>6</span><span data-i18n="process6">Tests, mise en service et accompagnement</span></li>
           </ol>
         </div>
       </section>
@@ -171,24 +204,28 @@
       <section id="projects" class="section projects">
         <div class="container">
           <div class="section-heading reveal">
-            <h2>Selected projects</h2>
+            <h2 data-i18n="projectsTitle">Projets & références</h2>
           </div>
           <div class="card-grid projects-grid">
             <article class="project-card reveal">
-              <h3>Smart apartment renovation</h3>
-              <p>Integrated lighting scenes, climate control and voice automation.</p>
+              <h3 data-i18n="project1Title">Rénovation d’un appartement connecté</h3>
+              <p data-i18n="project1Text">Éclairage, chauffage et pilotage intelligent centralisé.</p>
             </article>
             <article class="project-card reveal">
-              <h3>Connected office space</h3>
-              <p>Renovated collaborative workspace with centralized automation control.</p>
+              <h3 data-i18n="project2Title">Bureau intelligent avec supervision</h3>
+              <p data-i18n="project2Text">Espace de travail modernisé avec supervision GTB en temps réel.</p>
             </article>
             <article class="project-card reveal">
-              <h3>Energy-efficient villa</h3>
-              <p>Full modernization with high-comfort thermal and energy management.</p>
+              <h3 data-i18n="project3Title">Villa optimisée en énergie</h3>
+              <p data-i18n="project3Text">Rénovation premium et optimisation énergétique multi-systèmes.</p>
             </article>
             <article class="project-card reveal">
-              <h3>Supervision dashboard for building control</h3>
-              <p>Custom interface for multi-system monitoring and operational optimization.</p>
+              <h3 data-i18n="project4Title">Interface de supervision GTB</h3>
+              <p data-i18n="project4Text">Conception de synoptiques clairs pour le pilotage bâtiment.</p>
+            </article>
+            <article class="project-card reveal">
+              <h3 data-i18n="project5Title">Assistance EBO pour intégrateur</h3>
+              <p data-i18n="project5Text">Support programmation, alarmes et mise en service sur projet tertiaire.</p>
             </article>
           </div>
         </div>
@@ -197,41 +234,40 @@
       <section id="contact" class="section contact">
         <div class="container contact-grid reveal">
           <div>
-            <h2>Let’s plan your next smart renovation.</h2>
-            <p>
-              Tell us about your project and our team will prepare a tailored
-              modernization and integration proposal.
+            <h2 data-i18n="contactTitle">Parlons de votre projet de rénovation intelligente.</h2>
+            <p data-i18n="contactText">
+              Notre équipe vous propose une solution adaptée pour rénover, automatiser et superviser vos espaces de façon durable.
             </p>
           </div>
           <form class="lead-form" action="#" method="post">
             <label>
-              Name
+              <span data-i18n="formName">Nom</span>
               <input type="text" name="name" required />
             </label>
             <label>
-              Email
+              <span data-i18n="formEmail">Email</span>
               <input type="email" name="email" required />
             </label>
             <label>
-              Phone
+              <span data-i18n="formPhone">Téléphone</span>
               <input type="tel" name="phone" required />
             </label>
             <label>
-              Project type
+              <span data-i18n="formProjectType">Type de projet</span>
               <select name="projectType" required>
-                <option value="">Select a project type</option>
-                <option>Residential smart renovation</option>
-                <option>Professional / office modernization</option>
-                <option>Building automation upgrade</option>
-                <option>Energy optimization project</option>
+                <option value="" data-i18n="formSelectPlaceholder">Sélectionnez un type de projet</option>
+                <option data-i18n="formOption1">Rénovation résidentielle intelligente</option>
+                <option data-i18n="formOption2">Modernisation de bureaux / tertiaire</option>
+                <option data-i18n="formOption3">Projet GTB / supervision</option>
+                <option data-i18n="formOption4">Assistance EBO et programmation technique</option>
               </select>
             </label>
             <label>
-              Message
+              <span data-i18n="formMessage">Message</span>
               <textarea name="message" rows="4" required></textarea>
             </label>
-            <button type="submit" class="btn btn-primary full-width">
-              Start your smart renovation project
+            <button type="submit" class="btn btn-primary full-width" data-i18n="formCta">
+              Démarrer votre projet
             </button>
           </form>
         </div>
@@ -240,7 +276,7 @@
 
     <footer class="site-footer">
       <div class="container">
-        <p>© <span id="year"></span> Hypervision. Modern renovation, intelligently integrated.</p>
+        <p data-i18n="footerText">© <span id="year"></span> Hypervision. Rénovation moderne, technologies intelligentes et expertise GTB.</p>
       </div>
     </footer>
 
