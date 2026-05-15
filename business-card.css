@@ -34,7 +34,7 @@ body.business-card-page {
   margin: 0;
   color: #0c5fff;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0;
   line-height: 1;
   text-transform: uppercase;
@@ -44,16 +44,35 @@ body.business-card-page {
   width: 85mm;
   height: 55mm;
   overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
   background: #ffffff;
   border: 1px solid #d9e6ff;
   border-radius: 3mm;
-  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 18px 44px rgba(17, 24, 39, 0.13);
   color: #111827;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
+}
+
+.business-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2.4mm;
+  background: #0c5fff;
+  pointer-events: none;
+}
+
+.business-card::after {
+  content: "";
+  position: absolute;
+  inset: 4.6mm 4.6mm auto auto;
+  width: 22mm;
+  height: 0;
+  border-top: 1px solid #d9e6ff;
+  pointer-events: none;
 }
 
 .business-card a {
@@ -62,26 +81,18 @@ body.business-card-page {
 }
 
 .business-card-front {
-  padding: 5mm 5mm 4.5mm;
+  padding: 5mm 5mm 4.4mm 6.6mm;
 }
 
 .business-card-back {
-  padding: 5mm;
+  padding: 5.5mm 6mm 4.8mm 7.5mm;
   justify-content: space-between;
   text-align: center;
 }
 
-.business-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-top: 1.8mm solid #0c5fff;
-  pointer-events: none;
-}
-
 .business-card-header,
 .business-card-back-header,
-.business-card-front-content,
+.business-card-front-grid,
 .business-card-footer,
 .business-card-services,
 .business-card-back-footer {
@@ -92,7 +103,7 @@ body.business-card-page {
 .business-card-brand {
   display: flex;
   align-items: center;
-  gap: 2.5mm;
+  gap: 2.6mm;
   min-width: 0;
 }
 
@@ -101,8 +112,8 @@ body.business-card-page {
 }
 
 .business-card-logo {
-  width: 9.5mm;
-  height: 9.5mm;
+  width: 10.2mm;
+  height: 10.2mm;
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -118,95 +129,140 @@ body.business-card-page {
 
 .business-card-name {
   color: #0c5fff;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 12.7px;
+  font-weight: 900;
   letter-spacing: 0;
-  line-height: 1.05;
+  line-height: 1.02;
 }
 
 .business-card-tagline {
   margin-top: 0.8mm;
   color: #111827;
-  font-size: 6.6px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 6.5px;
+  font-weight: 800;
+  line-height: 1.15;
 }
 
-.business-card-front-content {
+.business-card-front-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: center;
-  gap: 3.5mm;
+  grid-template-columns: minmax(0, 1fr) 23mm;
+  align-items: end;
+  gap: 3.2mm;
+  padding-top: 2.2mm;
+}
+
+.business-card-front-copy {
+  display: grid;
+  align-content: end;
+  gap: 5.2mm;
+  min-width: 0;
 }
 
 .business-card-identity {
-  padding-left: 3mm;
-  border-left: 0.7mm solid #0c5fff;
+  display: grid;
+  gap: 1.3mm;
+  padding: 2.8mm 3.3mm;
+  border-left: 0.8mm solid #0c5fff;
+  background: #f6f9ff;
 }
 
 .business-card-person {
   color: #111827;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.08;
+  font-size: 15.6px;
+  font-weight: 900;
+  line-height: 1.02;
 }
 
 .business-card-role {
-  margin-top: 1mm;
   color: #111827;
-  font-size: 7.5px;
-  font-weight: 700;
-  line-height: 1.25;
+  font-size: 7.6px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .business-card-contact {
   display: grid;
-  gap: 0.9mm;
+  gap: 1mm;
   color: #111827;
-  font-size: 7.2px;
-  font-weight: 700;
-  line-height: 1.25;
+  font-size: 7.1px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.business-card-contact a,
+.business-card-contact > span {
+  display: flex;
+  align-items: center;
+  gap: 1.5mm;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.business-card-contact span span,
+.business-card-contact a span {
+  min-width: 5.6mm;
+  color: #0c5fff;
+  font-size: 5.8px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.business-card-qr-panel {
+  display: grid;
+  gap: 1.4mm;
+  align-content: end;
+  justify-items: center;
+  padding: 2.2mm 1.6mm;
+  border: 1px solid #d9e6ff;
+  background: #ffffff;
+}
+
+.business-card-qr {
+  width: 19mm;
+  height: 19mm;
+  display: block;
+}
+
+.business-card-qr img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.business-card-qr-panel > span {
+  color: #0c5fff;
+  font-size: 5.8px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .business-card-footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 4mm;
+  justify-content: flex-start;
+  padding-top: 2.2mm;
 }
 
 .business-card-website {
   min-width: 0;
   color: #0c5fff;
-  font-size: 7px;
-  font-weight: 800;
+  font-size: 7.2px;
+  font-weight: 900;
   line-height: 1.2;
   overflow-wrap: anywhere;
 }
 
-.business-card-qr {
-  width: 15mm;
-  height: 15mm;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  border: 0.45mm solid #0c5fff;
-  background: #f6f9ff;
-  color: #0c5fff;
-  font-size: 5px;
-  font-weight: 800;
-  line-height: 1;
-  text-align: center;
+.business-card-back .business-card-logo {
+  width: 11mm;
+  height: 11mm;
 }
 
 .business-card-services {
   width: 100%;
-  margin: 0 auto;
-  padding: 4.2mm 5mm;
-  border-top: 1px solid #d9e6ff;
-  border-bottom: 1px solid #d9e6ff;
-  background: #f6f9ff;
 }
 
 .business-card-services ul {
@@ -214,33 +270,50 @@ body.business-card-page {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 2.2mm;
+  gap: 1.7mm;
 }
 
 .business-card-services li {
+  display: flex;
+  align-items: center;
+  gap: 2.4mm;
+  min-height: 7.4mm;
+  padding: 1.4mm 3mm;
+  border: 1px solid #d9e6ff;
+  background: #f6f9ff;
   color: #111827;
-  font-size: 8.4px;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.business-card-services li span {
+  color: #0c5fff;
+  font-size: 6.2px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .business-card-back-footer {
   display: grid;
   gap: 1.2mm;
+  padding-top: 2.5mm;
+  border-top: 1px solid #d9e6ff;
 }
 
 .business-card-back-footer p {
   color: #111827;
-  font-size: 7.2px;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 7.4px;
+  font-weight: 900;
+  line-height: 1.15;
 }
 
 .business-card-back-footer a {
   color: #0c5fff;
-  font-size: 7.2px;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: 7.4px;
+  font-weight: 900;
+  line-height: 1.15;
   overflow-wrap: anywhere;
 }
 
