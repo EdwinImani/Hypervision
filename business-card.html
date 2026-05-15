@@ -12,7 +12,10 @@
         <h1 class="business-card-label" id="business-card-front-title">Recto</h1>
 
         <article class="business-card business-card-front" aria-label="Recto de la carte de visite Hypervision">
-          <header class="business-card-header">
+          <span class="business-card-grid" aria-hidden="true"></span>
+          <span class="business-card-circuit business-card-circuit-front" aria-hidden="true"></span>
+
+          <header class="business-card-header business-card-front-header">
             <div class="business-card-brand">
               <img
                 class="business-card-logo"
@@ -24,23 +27,35 @@
                 <p class="business-card-tagline">Smart Building Solutions</p>
               </div>
             </div>
+            <span class="business-card-micro">BMS / GTB</span>
           </header>
 
           <div class="business-card-front-grid">
             <div class="business-card-front-copy">
               <section class="business-card-identity" aria-label="Identit&eacute;">
+                <p class="business-card-kicker">Fondateur</p>
                 <p class="business-card-person">Edwin Imani</p>
                 <p class="business-card-role">&Eacute;lectricit&eacute; intelligente &amp; GTB</p>
               </section>
 
               <section class="business-card-contact" aria-label="Coordonn&eacute;es">
-                <a href="tel:+33767690805"><span>T</span> +33 7 67 69 08 05</a>
-                <a href="mailto:hypervision.paris@gmail.com"><span>M</span> hypervision.paris@gmail.com</a>
-                <span><span>IDF</span> &Icirc;le-de-France</span>
+                <a href="tel:+33767690805">
+                  <span>T</span>
+                  <strong>+33 7 67 69 08 05</strong>
+                </a>
+                <a href="mailto:hypervision.paris@gmail.com">
+                  <span>M</span>
+                  <strong>hypervision.paris@gmail.com</strong>
+                </a>
+                <span>
+                  <span>IDF</span>
+                  <strong>&Icirc;le-de-France</strong>
+                </span>
               </section>
             </div>
 
             <aside class="business-card-qr-panel" aria-label="QR code vers le site Hypervision">
+              <span class="business-card-qr-label">Site</span>
               <a
                 class="business-card-qr"
                 href="https://www.hypervision-solution.fr"
@@ -48,7 +63,7 @@
               >
                 <img src="assets/img/qr-hypervision.png" alt="QR code vers le site Hypervision" />
               </a>
-              <span>Scannez le site</span>
+              <span>Scan</span>
             </aside>
           </div>
 
@@ -64,6 +79,9 @@
         <h2 class="business-card-label" id="business-card-back-title">Verso</h2>
 
         <article class="business-card business-card-back" aria-label="Verso de la carte de visite Hypervision">
+          <span class="business-card-grid" aria-hidden="true"></span>
+          <span class="business-card-circuit business-card-circuit-back" aria-hidden="true"></span>
+
           <header class="business-card-back-header">
             <div class="business-card-brand business-card-brand-centered">
               <img
@@ -80,9 +98,18 @@
 
           <section class="business-card-services" aria-label="Services">
             <ul>
-              <li><span>01</span> R&eacute;novation &eacute;lectrique intelligente</li>
-              <li><span>02</span> Domotique</li>
-              <li><span>03</span> GTB / Supervision</li>
+              <li>
+                <span>01</span>
+                <strong>R&eacute;novation &eacute;lectrique intelligente</strong>
+              </li>
+              <li>
+                <span>02</span>
+                <strong>Domotique</strong>
+              </li>
+              <li>
+                <span>03</span>
+                <strong>GTB / Supervision</strong>
+              </li>
             </ul>
           </section>
 
