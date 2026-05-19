@@ -46,13 +46,14 @@
 
         <div class="nav-panel" id="site-navigation">
           <a href="#accueil" data-i18n="navHome">Accueil</a>
-          <a href="#actions" data-i18n="navActions">Expertise</a>
+          <a href="#actions" data-i18n="navActions">Piliers</a>
           <a href="#services" data-i18n="navServices">Services</a>
           <a href="#demo" data-i18n="navDemo">D&eacute;mo</a>
+          <a href="#cas-usage" data-i18n="navUseCases">Cas d'usage</a>
           <a href="#methode" data-i18n="navMethod">M&eacute;thode</a>
-          <a href="#apropos" data-i18n="navAbout">&Agrave; propos</a>
+          <a href="#confiance" data-i18n="navTrust">Confiance</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
-          <a class="btn btn-primary nav-mobile-cta" href="#contact" data-i18n="diagnosticCta">Demander un diagnostic</a>
+          <a class="btn btn-primary nav-mobile-cta" href="#contact" data-i18n="diagnosticCta">Diagnostic technique</a>
         </div>
 
         <div class="header-actions">
@@ -60,7 +61,7 @@
             <button class="lang-btn is-active" type="button" data-lang="fr" aria-pressed="true">FR</button>
             <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
-          <a class="btn btn-primary nav-cta" href="#contact" data-i18n="diagnosticCta">Demander un diagnostic</a>
+          <a class="btn btn-primary nav-cta" href="#contact" data-i18n="diagnosticCta">Diagnostic technique</a>
           <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
             <span class="menu-line"></span>
             <span class="menu-line"></span>
@@ -78,16 +79,16 @@
             <p class="eyebrow" data-i18n="heroKicker">&Eacute;lectricit&eacute;, GTB et supervision</p>
             <h1 data-i18n="heroTitle">Des b&acirc;timents plus intelligents, mieux pilot&eacute;s et plus performants.</h1>
             <p class="hero-subtitle" data-i18n="heroSubtitle">
-              Hypervision con&ccedil;oit et int&egrave;gre des solutions &eacute;lectriques, GTB et supervision pour rendre les b&acirc;timents plus lisibles, plus efficaces et plus simples &agrave; exploiter.
+              Hypervision int&egrave;gre l'&eacute;lectricit&eacute;, la GTB et la supervision pour rendre les b&acirc;timents plus lisibles, contr&ocirc;lables et efficaces.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact" data-i18n="heroPrimary">Demander un diagnostic</a>
-              <a class="btn btn-secondary" href="#demo" data-i18n="heroSecondary">Voir la d&eacute;mo</a>
+              <a class="btn btn-secondary" href="#demo" data-i18n="heroSecondary">Voir la d&eacute;mo interactive</a>
             </div>
             <div class="hero-signals" aria-label="Expertises cl&eacute;s">
-              <span>GTB / GTC</span>
-              <span>BACnet / Modbus</span>
-              <span>EBO</span>
+              <span data-i18n="signalElectrical">&Eacute;lectricit&eacute;</span>
+              <span data-i18n="signalBms">GTB / GTC</span>
+              <span data-i18n="signalSupervision">Supervision</span>
             </div>
           </div>
 
@@ -98,7 +99,7 @@
                   <span class="demo-kicker" data-i18n="heroDemoKicker">Interface supervision</span>
                   <strong data-i18n="heroDemoTitle">B&acirc;timent Sud</strong>
                 </div>
-                <span class="live-indicator" data-status-summary>4 lots actifs</span>
+                <span class="live-indicator" data-status-summary>5 lots actifs</span>
               </div>
 
               <div class="building-card">
@@ -188,7 +189,11 @@
                 </button>
                 <button class="control-chip" type="button" data-demo-control="security" aria-pressed="true">
                   <span class="chip-icon chip-icon-security" aria-hidden="true"></span>
-                  <span data-i18n="controlSecurity">Pr&eacute;sence</span>
+                  <span data-i18n="controlSecurity">S&eacute;curit&eacute;</span>
+                </button>
+                <button class="control-chip" type="button" data-demo-control="eco" aria-pressed="true">
+                  <span class="chip-icon chip-icon-eco" aria-hidden="true"></span>
+                  <span data-i18n="controlEco">Eco</span>
                 </button>
               </div>
             </div>
@@ -199,25 +204,25 @@
       <section class="section actions-section" id="actions">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow" data-i18n="actionsEyebrow">Ce que nous faisons</p>
-            <h2 data-i18n="actionsTitle">Rendre les installations techniques plus claires &agrave; piloter.</h2>
+            <p class="eyebrow" data-i18n="actionsEyebrow">Valeur</p>
+            <h2 data-i18n="actionsTitle">Contr&ocirc;ler, superviser, optimiser.</h2>
           </div>
 
           <div class="action-grid">
             <article class="premium-card reveal">
               <span class="card-icon icon-control" aria-hidden="true"></span>
               <h3 data-i18n="actionControlTitle">Contr&ocirc;ler</h3>
-              <p data-i18n="actionControlText">Centraliser les commandes utiles pour agir vite, sans complexifier l'exploitation.</p>
+              <p data-i18n="actionControlText">Des commandes utiles, lisibles et actionnables rapidement.</p>
             </article>
             <article class="premium-card reveal">
               <span class="card-icon icon-supervise" aria-hidden="true"></span>
               <h3 data-i18n="actionSuperviseTitle">Superviser</h3>
-              <p data-i18n="actionSuperviseText">Visualiser les &eacute;tats, alarmes et consommations dans une interface lisible.</p>
+              <p data-i18n="actionSuperviseText">Des &eacute;tats, alarmes et consommations visibles au bon endroit.</p>
             </article>
             <article class="premium-card reveal">
               <span class="card-icon icon-optimize" aria-hidden="true"></span>
               <h3 data-i18n="actionOptimizeTitle">Optimiser</h3>
-              <p data-i18n="actionOptimizeText">D&eacute;tecter les d&eacute;rives et ajuster les sc&eacute;narios pour gagner en performance.</p>
+              <p data-i18n="actionOptimizeText">Des sc&eacute;narios ajust&eacute;s pour limiter les d&eacute;rives.</p>
             </article>
           </div>
         </div>
@@ -227,39 +232,39 @@
         <div class="container">
           <div class="section-heading reveal">
             <p class="eyebrow" data-i18n="servicesEyebrow">Services</p>
-            <h2 data-i18n="servicesTitle">Des interventions techniques, nettes et maintenables.</h2>
+            <h2 data-i18n="servicesTitle">Six expertises pour rendre le b&acirc;timent plus lisible.</h2>
           </div>
 
           <div class="service-grid">
             <article class="service-card reveal">
               <span class="service-icon service-icon-electric" aria-hidden="true"></span>
               <h3 data-i18n="serviceElectricalTitle">&Eacute;lectricit&eacute; technique</h3>
-              <p data-i18n="serviceElectricalText">Installation, r&eacute;novation et int&eacute;gration d'&eacute;quipements &eacute;lectriques pour b&acirc;timents professionnels.</p>
+              <p data-i18n="serviceElectricalText">Installations et r&eacute;novations &eacute;lectriques orient&eacute;es exploitation.</p>
             </article>
             <article class="service-card reveal">
               <span class="service-icon service-icon-bms" aria-hidden="true"></span>
               <h3 data-i18n="serviceBmsTitle">GTB / GTC</h3>
-              <p data-i18n="serviceBmsText">Pilotage centralis&eacute; des &eacute;quipements techniques pour un b&acirc;timent mieux contr&ocirc;l&eacute;.</p>
+              <p data-i18n="serviceBmsText">Pilotage centralis&eacute; des lots techniques du b&acirc;timent.</p>
             </article>
             <article class="service-card reveal">
               <span class="service-icon service-icon-screen" aria-hidden="true"></span>
               <h3 data-i18n="serviceSupervisionTitle">Supervision</h3>
-              <p data-i18n="serviceSupervisionText">Interfaces visuelles claires pour surveiller &eacute;tats, alarmes et commandes.</p>
+              <p data-i18n="serviceSupervisionText">Synoptiques clairs pour surveiller &eacute;tats, alarmes et commandes.</p>
             </article>
             <article class="service-card reveal">
               <span class="service-icon service-icon-automation" aria-hidden="true"></span>
               <h3 data-i18n="serviceAutomationTitle">Automatisation</h3>
-              <p data-i18n="serviceAutomationText">Logiques de commande coh&eacute;rentes pour simplifier l'exploitation du b&acirc;timent.</p>
+              <p data-i18n="serviceAutomationText">Logiques de commande coh&eacute;rentes et testables.</p>
             </article>
             <article class="service-card reveal">
               <span class="service-icon service-icon-energy" aria-hidden="true"></span>
               <h3 data-i18n="serviceEnergyTitle">Suivi &eacute;nerg&eacute;tique</h3>
-              <p data-i18n="serviceEnergyText">Mesure, visualisation et d&eacute;tection des d&eacute;rives de consommation.</p>
+              <p data-i18n="serviceEnergyText">Comptage, visualisation et suivi des d&eacute;rives.</p>
             </article>
             <article class="service-card reveal service-card-highlight">
               <span class="service-icon service-icon-support" aria-hidden="true"></span>
               <h3 data-i18n="serviceEboTitle">Assistance EBO</h3>
-              <p data-i18n="serviceEboText">Support technique pour int&eacute;grateurs et entreprises sur programmation et supervision.</p>
+              <p data-i18n="serviceEboText">Support sur EBO, BACnet, Modbus et mise en service.</p>
             </article>
           </div>
         </div>
@@ -271,7 +276,7 @@
             <p class="eyebrow" data-i18n="demoEyebrow">D&eacute;mo interactive</p>
             <h2 data-i18n="demoTitle">Piloter un b&acirc;timent en quelques gestes.</h2>
             <p data-i18n="demoText">
-              Une interface claire permet de visualiser et piloter les &eacute;quipements du b&acirc;timent en quelques gestes.
+              Activez les lots techniques et observez l'impact sur le b&acirc;timent.
             </p>
             <div class="demo-metrics" aria-label="Indicateurs de demo">
               <div>
@@ -295,7 +300,7 @@
                 <span class="demo-kicker" data-i18n="demoPanelKicker">Supervision live</span>
                 <strong data-i18n="demoPanelTitle">Niveau exploitation</strong>
               </div>
-              <span class="live-indicator" data-status-summary>4 lots actifs</span>
+              <span class="live-indicator" data-status-summary>5 lots actifs</span>
             </div>
 
             <div class="demo-workspace">
@@ -334,8 +339,18 @@
                   <span class="switch-copy">
                     <span class="switch-icon switch-icon-security" aria-hidden="true"></span>
                     <span>
-                      <strong data-i18n="switchSecurityTitle">Pr&eacute;sence</strong>
+                      <strong data-i18n="switchSecurityTitle">S&eacute;curit&eacute;</strong>
                       <small data-control-state="security">S&eacute;curis&eacute;e</small>
+                    </span>
+                  </span>
+                  <span class="switch-track" aria-hidden="true"><span></span></span>
+                </button>
+                <button class="smart-switch" type="button" data-demo-control="eco" aria-pressed="true">
+                  <span class="switch-copy">
+                    <span class="switch-icon switch-icon-eco" aria-hidden="true"></span>
+                    <span>
+                      <strong data-i18n="switchEcoTitle">Mode &eacute;co</strong>
+                      <small data-control-state="eco">Actif</small>
                     </span>
                   </span>
                   <span class="switch-track" aria-hidden="true"><span></span></span>
@@ -427,6 +442,43 @@
         </div>
       </section>
 
+      <section class="section use-cases-section" id="cas-usage">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="useCasesEyebrow">Cas d'usage</p>
+            <h2 data-i18n="useCasesTitle">Des probl&egrave;mes concrets, des r&eacute;ponses techniques claires.</h2>
+          </div>
+
+          <div class="use-case-grid">
+            <article class="use-case-card reveal">
+              <span class="use-case-number">01</span>
+              <h3 data-i18n="useCase1Title">Piloter un b&acirc;timent &agrave; distance</h3>
+              <p><strong data-i18n="solutionLabel">Solution</strong> <span data-i18n="useCase1Text">Commandes, &eacute;tats, alarmes et supervision centralis&eacute;e.</span></p>
+            </article>
+            <article class="use-case-card reveal">
+              <span class="use-case-number">02</span>
+              <h3 data-i18n="useCase2Title">Comprendre les consommations</h3>
+              <p><strong data-i18n="solutionLabel">Solution</strong> <span data-i18n="useCase2Text">Comptage, visualisation &eacute;nergie et d&eacute;tection des d&eacute;rives.</span></p>
+            </article>
+            <article class="use-case-card reveal">
+              <span class="use-case-number">03</span>
+              <h3 data-i18n="useCase3Title">Moderniser une installation</h3>
+              <p><strong data-i18n="solutionLabel">Solution</strong> <span data-i18n="useCase3Text">&Eacute;lectricit&eacute;, automatisation et supervision pens&eacute;es ensemble.</span></p>
+            </article>
+            <article class="use-case-card reveal">
+              <span class="use-case-number">04</span>
+              <h3 data-i18n="useCase4Title">Aider un int&eacute;grateur</h3>
+              <p><strong data-i18n="solutionLabel">Solution</strong> <span data-i18n="useCase4Text">Support EBO, BACnet, Modbus, synoptiques et mise en service.</span></p>
+            </article>
+            <article class="use-case-card reveal">
+              <span class="use-case-number">05</span>
+              <h3 data-i18n="useCase5Title">Simplifier la maintenance</h3>
+              <p><strong data-i18n="solutionLabel">Solution</strong> <span data-i18n="useCase5Text">Points structur&eacute;s, alarmes lisibles et documentation claire.</span></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="section method-section" id="methode">
         <div class="container">
           <div class="section-heading reveal">
@@ -459,17 +511,11 @@
         </div>
       </section>
 
-      <section class="section about-section" id="apropos">
-        <div class="container about-grid">
-          <div class="about-copy reveal">
-            <p class="eyebrow" data-i18n="aboutEyebrow">Hypervision</p>
-            <h2 data-i18n="aboutTitle">Une approche technique, lisible et proche du terrain.</h2>
-            <p data-i18n="aboutText">
-              Hypervision intervient &agrave; l'intersection de l'&eacute;lectricit&eacute;, de l'automatisme, de la GTB et de la supervision. L'objectif : livrer des solutions s&eacute;rieuses, maintenables et vraiment exploitables.
-            </p>
-            <p class="audience-line" data-i18n="aboutAudience">
-              B&acirc;timents professionnels, tertiaires, int&eacute;grateurs, installateurs et clients priv&eacute;s premium.
-            </p>
+      <section class="section trust-section" id="confiance">
+        <div class="container trust-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="trustEyebrow">Confiance technique</p>
+            <h2 data-i18n="trustTitle">Une cr&eacute;dibilit&eacute; bas&eacute;e sur la m&eacute;thode.</h2>
           </div>
 
           <div class="credibility-grid reveal">
@@ -479,15 +525,15 @@
             </article>
             <article>
               <span class="mini-mark"></span>
-              <strong data-i18n="credibilityBlock2">Solutions maintenables</strong>
+              <strong data-i18n="credibilityBlock2">Tests fonctionnels</strong>
             </article>
             <article>
               <span class="mini-mark"></span>
-              <strong data-i18n="credibilityBlock3">Tests fonctionnels</strong>
+              <strong data-i18n="credibilityBlock3">Documentation claire</strong>
             </article>
             <article>
               <span class="mini-mark"></span>
-              <strong data-i18n="credibilityBlock4">Approche claire</strong>
+              <strong data-i18n="credibilityBlock4">Solutions maintenables</strong>
             </article>
           </div>
         </div>
@@ -497,14 +543,14 @@
         <div class="container contact-grid">
           <div class="contact-copy reveal">
             <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
-            <h2 data-i18n="contactTitle">Parlons de votre projet technique</h2>
+            <h2 data-i18n="contactTitle">Parlons de votre projet technique.</h2>
             <p data-i18n="contactText">
-              Installation, r&eacute;novation, GTB, supervision ou assistance technique : &eacute;changeons sur votre besoin.
+              Installation, r&eacute;novation, GTB, supervision ou assistance EBO : d&eacute;crivez votre besoin, nous vous r&eacute;pondons avec une premi&egrave;re analyse claire.
             </p>
-            <a class="btn btn-primary" href="#lead-form" data-i18n="contactCta">Demander un diagnostic</a>
+            <a class="btn btn-primary" href="#lead-form" data-i18n="contactCta">Demander un diagnostic technique</a>
           </div>
 
-          <form class="lead-form reveal" id="lead-form" action="#" method="post">
+          <form class="lead-form reveal" id="lead-form" action="mailto:contact@hypervision-solution.fr" method="post" enctype="text/plain">
             <div class="form-row">
               <label for="name" data-i18n="formName">Nom</label>
               <input id="name" name="name" type="text" autocomplete="name" required />
@@ -538,8 +584,12 @@
               <textarea id="message" name="message" rows="4" required></textarea>
             </div>
             <button class="btn btn-primary form-submit" type="submit" data-i18n="formSubmit">
-              Envoyer la demande
+              Envoyer par email
             </button>
+            <p class="form-fallback">
+              <span data-i18n="formFallback">Aucun backend n'est configur&eacute; : l'envoi ouvre votre client email. Vous pouvez aussi &eacute;crire &agrave;</span>
+              <a href="mailto:contact@hypervision-solution.fr">contact@hypervision-solution.fr</a>.
+            </p>
           </form>
         </div>
       </section>
@@ -555,8 +605,9 @@
           <a href="#accueil" data-i18n="navHome">Accueil</a>
           <a href="#services" data-i18n="navServices">Services</a>
           <a href="#demo" data-i18n="navDemo">D&eacute;mo</a>
+          <a href="#cas-usage" data-i18n="navUseCases">Cas d'usage</a>
           <a href="#methode" data-i18n="navMethod">M&eacute;thode</a>
-          <a href="#apropos" data-i18n="navAbout">&Agrave; propos</a>
+          <a href="#confiance" data-i18n="navTrust">Confiance</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
           <a href="business-card.html">Carte de visite</a>
         </nav>

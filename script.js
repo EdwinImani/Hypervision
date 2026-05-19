@@ -1,52 +1,56 @@
 const translations = {
   en: {
     navHome: "Home",
-    navActions: "Expertise",
+    navActions: "Pillars",
     navServices: "Services",
     navDemo: "Demo",
+    navUseCases: "Use cases",
     navMethod: "Method",
-    navAbout: "About",
+    navTrust: "Trust",
     navContact: "Contact",
-    diagnosticCta: "Request an assessment",
+    diagnosticCta: "Technical assessment",
     menuLabel: "Open navigation",
     heroKicker: "Electrical engineering, BMS and supervision",
     heroTitle: "Smarter buildings, better controlled and more efficient.",
     heroSubtitle:
-      "Hypervision designs and integrates electrical, BMS and supervision solutions to make buildings clearer, more efficient and easier to operate.",
+      "Hypervision integrates electrical systems, BMS and supervision to make buildings clearer, controllable and efficient.",
     heroPrimary: "Request an assessment",
-    heroSecondary: "View the demo",
+    heroSecondary: "View interactive demo",
+    signalElectrical: "Electrical",
+    signalBms: "BMS / BEMS",
+    signalSupervision: "Supervision",
     heroDemoKicker: "Supervision interface",
     heroDemoTitle: "South building",
     controlLights: "Light",
     controlClimate: "HVAC",
     controlBlinds: "Blinds",
-    controlSecurity: "Presence",
-    actionsEyebrow: "What we do",
-    actionsTitle: "Making technical installations clearer to operate.",
+    controlSecurity: "Security",
+    controlEco: "Eco",
+    actionsEyebrow: "Value",
+    actionsTitle: "Control, supervise, optimize.",
     actionControlTitle: "Control",
-    actionControlText: "Centralize useful commands so teams can act quickly without complicating operations.",
+    actionControlText: "Useful commands that are clear and quick to activate.",
     actionSuperviseTitle: "Supervise",
-    actionSuperviseText: "View statuses, alarms and consumption in a readable interface.",
+    actionSuperviseText: "Statuses, alarms and consumption visible in the right place.",
     actionOptimizeTitle: "Optimize",
-    actionOptimizeText: "Detect drifts and adjust scenarios to improve performance.",
+    actionOptimizeText: "Adjusted scenarios to limit operational drift.",
     servicesEyebrow: "Services",
-    servicesTitle: "Precise, maintainable technical interventions.",
+    servicesTitle: "Six fields of expertise for a clearer building.",
     serviceElectricalTitle: "Technical electrical work",
-    serviceElectricalText:
-      "Installation, renovation and integration of electrical equipment for professional buildings.",
+    serviceElectricalText: "Electrical installations and renovations designed for operation.",
     serviceBmsTitle: "BMS / BEMS",
-    serviceBmsText: "Centralized control of technical equipment for a better-managed building.",
+    serviceBmsText: "Centralized control of the building's technical systems.",
     serviceSupervisionTitle: "Supervision",
-    serviceSupervisionText: "Clear visual interfaces to monitor statuses, alarms and commands.",
+    serviceSupervisionText: "Clear synoptics to monitor statuses, alarms and commands.",
     serviceAutomationTitle: "Automation",
-    serviceAutomationText: "Coherent control logic to simplify building operation.",
+    serviceAutomationText: "Coherent and testable control logic.",
     serviceEnergyTitle: "Energy monitoring",
-    serviceEnergyText: "Measurement, visualization and detection of consumption drifts.",
+    serviceEnergyText: "Metering, visualization and drift monitoring.",
     serviceEboTitle: "EBO assistance",
-    serviceEboText: "Technical support for integrators and companies on programming and supervision.",
+    serviceEboText: "Support for EBO, BACnet, Modbus and commissioning.",
     demoEyebrow: "Interactive demo",
     demoTitle: "Control a building in a few gestures.",
-    demoText: "A clear interface makes it possible to view and control building equipment in a few gestures.",
+    demoText: "Activate technical systems and watch the impact on the building.",
     metricComfort: "Comfort",
     metricEnergy: "Energy",
     metricMode: "Mode",
@@ -55,9 +59,23 @@ const translations = {
     switchLightsTitle: "Light",
     switchClimateTitle: "HVAC / climate",
     switchBlindsTitle: "Blinds",
-    switchSecurityTitle: "Presence",
+    switchSecurityTitle: "Security",
+    switchEcoTitle: "Eco mode",
     floatingEnergy: "Energy",
     floatingTemp: "Ambience",
+    useCasesEyebrow: "Use cases",
+    useCasesTitle: "Concrete problems, clear technical answers.",
+    solutionLabel: "Solution",
+    useCase1Title: "Control a building remotely",
+    useCase1Text: "Commands, statuses, alarms and centralized supervision.",
+    useCase2Title: "Understand consumption",
+    useCase2Text: "Metering, energy visualization and drift detection.",
+    useCase3Title: "Modernize an installation",
+    useCase3Text: "Electrical systems, automation and supervision designed together.",
+    useCase4Title: "Support an integrator",
+    useCase4Text: "EBO, BACnet, Modbus, synoptics and commissioning support.",
+    useCase5Title: "Simplify maintenance",
+    useCase5Text: "Structured points, readable alarms and clear documentation.",
     methodEyebrow: "Method",
     methodTitle: "A simple path, from field analysis to commissioning.",
     methodStep1Title: "Analysis",
@@ -68,19 +86,17 @@ const translations = {
     methodStep3Text: "Connect equipment and program useful logic.",
     methodStep4Title: "Commissioning",
     methodStep4Text: "Test statuses, commands, alarms and field feedback.",
-    aboutEyebrow: "Hypervision",
-    aboutTitle: "A technical, readable and field-aware approach.",
-    aboutText:
-      "Hypervision works at the intersection of electrical engineering, automation, BMS and supervision. The goal: deliver serious, maintainable and genuinely operational solutions.",
-    aboutAudience: "Professional and tertiary buildings, integrators, installers and premium private clients.",
+    trustEyebrow: "Technical trust",
+    trustTitle: "Credibility based on method.",
     credibilityBlock1: "Real field analysis",
-    credibilityBlock2: "Maintainable solutions",
-    credibilityBlock3: "Functional tests",
-    credibilityBlock4: "Clear approach",
+    credibilityBlock2: "Functional tests",
+    credibilityBlock3: "Clear documentation",
+    credibilityBlock4: "Maintainable solutions",
     contactEyebrow: "Contact",
-    contactTitle: "Let's discuss your technical project",
-    contactText: "Installation, renovation, BMS, supervision or technical assistance: let's discuss your need.",
-    contactCta: "Request an assessment",
+    contactTitle: "Let's discuss your technical project.",
+    contactText:
+      "Installation, renovation, BMS, supervision or EBO assistance: describe your need and we will reply with a first clear analysis.",
+    contactCta: "Request a technical assessment",
     formName: "Name",
     formCompany: "Company",
     formEmail: "Email",
@@ -94,7 +110,9 @@ const translations = {
     formOptionEbo: "EBO / integrator assistance",
     formOptionOther: "Other technical request",
     formMessage: "Message",
-    formSubmit: "Send request",
+    formSubmit: "Send by email",
+    formFallback:
+      "No backend is configured: submission opens your email client. You can also write to",
     footerTagline: "Electrical engineering, BMS and supervision for smart buildings.",
     footerCountry: "France",
     footerRights: "All rights reserved."
@@ -125,13 +143,15 @@ const demoCopy = {
       lights: "Activ\u00e9e",
       climate: "R\u00e9gul\u00e9",
       blinds: "Ouverts",
-      security: "S\u00e9curis\u00e9e"
+      security: "S\u00e9curis\u00e9e",
+      eco: "Actif"
     },
     inactive: {
       lights: "\u00c9teinte",
       climate: "Veille",
       blinds: "Ferm\u00e9s",
-      security: "Veille"
+      security: "Veille",
+      eco: "Inactif"
     },
     comfort: {
       optimal: "Optimal",
@@ -140,10 +160,12 @@ const demoCopy = {
     },
     mode: {
       presence: "Pr\u00e9sence",
+      eco: "Eco actif",
       standby: "Veille"
     },
     temperature: {
       regulated: "21.5 C",
+      eco: "20.8 C",
       passive: "23.8 C"
     }
   },
@@ -155,13 +177,15 @@ const demoCopy = {
       lights: "On",
       climate: "Regulated",
       blinds: "Open",
-      security: "Secured"
+      security: "Secured",
+      eco: "Active"
     },
     inactive: {
       lights: "Off",
       climate: "Standby",
       blinds: "Closed",
-      security: "Standby"
+      security: "Standby",
+      eco: "Inactive"
     },
     comfort: {
       optimal: "Optimal",
@@ -170,10 +194,12 @@ const demoCopy = {
     },
     mode: {
       presence: "Presence",
+      eco: "Eco active",
       standby: "Standby"
     },
     temperature: {
       regulated: "21.5 C",
+      eco: "20.8 C",
       passive: "23.8 C"
     }
   }
@@ -196,7 +222,8 @@ const smartDemoState = {
   lights: true,
   climate: true,
   blinds: true,
-  security: true
+  security: true,
+  eco: true
 };
 
 document.body.classList.add("can-reveal");
@@ -225,7 +252,8 @@ const calculateEnergy = () => {
   const climateLoad = smartDemoState.climate ? 7.6 : 1.2;
   const securityLoad = smartDemoState.security ? 0.8 : 0.3;
   const blindAdjustment = smartDemoState.blinds ? -1.4 : 1.1;
-  return Math.max(12, baseLoad + lightingLoad + climateLoad + securityLoad + blindAdjustment).toFixed(1);
+  const ecoAdjustment = smartDemoState.eco ? -5.4 : 0;
+  return Math.max(12, baseLoad + lightingLoad + climateLoad + securityLoad + blindAdjustment + ecoAdjustment).toFixed(1);
 };
 
 const getComfortState = () => {
@@ -240,14 +268,19 @@ const renderSmartDemos = () => {
   const activeCount = Object.values(smartDemoState).filter(Boolean).length;
   const energy = `${calculateEnergy()} kW`;
   const comfortKey = getComfortState();
-  const modeKey = smartDemoState.security ? "presence" : "standby";
-  const temp = smartDemoState.climate ? copy.temperature.regulated : copy.temperature.passive;
+  const modeKey = smartDemoState.eco ? "eco" : smartDemoState.security ? "presence" : "standby";
+  const temp = smartDemoState.climate
+    ? smartDemoState.eco
+      ? copy.temperature.eco
+      : copy.temperature.regulated
+    : copy.temperature.passive;
 
   demoRoots.forEach((root) => {
     root.classList.toggle("is-lights-on", smartDemoState.lights);
     root.classList.toggle("is-climate-on", smartDemoState.climate);
     root.classList.toggle("is-blinds-open", smartDemoState.blinds);
     root.classList.toggle("is-security-on", smartDemoState.security);
+    root.classList.toggle("is-eco-on", smartDemoState.eco);
   });
 
   demoControls.forEach((control) => {
@@ -318,6 +351,16 @@ const closeNavigation = () => {
   document.body.classList.remove("nav-open");
 };
 
+const revealVisibleElements = () => {
+  revealElements.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    const isNearViewport = rect.top < window.innerHeight + 120 && rect.bottom > -120;
+    if (isNearViewport) {
+      element.classList.add("is-visible");
+    }
+  });
+};
+
 if (yearElement) {
   yearElement.textContent = String(new Date().getFullYear());
 }
@@ -370,17 +413,51 @@ if ("IntersectionObserver" in window) {
   revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
+window.addEventListener("load", revealVisibleElements);
+window.addEventListener("hashchange", () => {
+  window.setTimeout(revealVisibleElements, 120);
+});
+window.setTimeout(revealVisibleElements, 250);
+
 if (leadForm) {
   leadForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const contactEmail = "contact@hypervision-solution.fr";
     const submitButton = leadForm.querySelector(".form-submit");
-    if (!submitButton) return;
-    const originalText = submitButton.dataset.originalText || submitButton.textContent.trim();
-    submitButton.dataset.originalText = originalText;
-    submitButton.textContent = currentLanguage === "fr" ? "Demande pr\u00eate \u00e0 envoyer" : "Request ready to send";
-    window.setTimeout(() => {
-      submitButton.textContent = translations.en.formSubmit && currentLanguage === "en" ? translations.en.formSubmit : originalText;
-    }, 2200);
+    const formData = new FormData(leadForm);
+    const needSelect = leadForm.querySelector("#need");
+    const needLabel = needSelect?.selectedOptions?.[0]?.textContent.trim() || "";
+    const name = formData.get("name") || "";
+    const company = formData.get("company") || "";
+    const email = formData.get("email") || "";
+    const phone = formData.get("phone") || "";
+    const message = formData.get("message") || "";
+    const subjectPrefix = currentLanguage === "fr" ? "Demande de diagnostic technique" : "Technical assessment request";
+    const subjectDetail = company || name || "Hypervision";
+    const subject = `${subjectPrefix} - ${subjectDetail}`;
+    const bodyLabels =
+      currentLanguage === "fr"
+        ? ["Nom", "Entreprise", "Email", "T\u00e9l\u00e9phone", "Besoin", "Message"]
+        : ["Name", "Company", "Email", "Phone", "Need", "Message"];
+    const body = [
+      `${bodyLabels[0]}: ${name}`,
+      `${bodyLabels[1]}: ${company}`,
+      `${bodyLabels[2]}: ${email}`,
+      `${bodyLabels[3]}: ${phone}`,
+      `${bodyLabels[4]}: ${needLabel}`,
+      "",
+      `${bodyLabels[5]}:`,
+      message
+    ].join("\n");
+
+    if (submitButton) {
+      submitButton.textContent = currentLanguage === "fr" ? "Ouverture de l'email..." : "Opening email...";
+      window.setTimeout(() => {
+        submitButton.textContent = currentLanguage === "fr" ? submitButton.dataset.frText : translations.en.formSubmit;
+      }, 1800);
+    }
+
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
