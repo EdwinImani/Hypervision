@@ -1,5 +1,26 @@
 const translations = {
   en: {
+    guideEyebrow: "ONE COMPANY, TWO AREAS OF EXPERTISE",
+    guideTitle: "Which service fits your project?",
+    guideIntro: "Atelier d’Arc and Hypervision Solutions are two service brands of the same company. Start with the one that matches your needs.",
+    guideAtelierRole: "INSTALL & RENOVATE",
+    guideAtelierTitle: "You have building work to carry out.",
+    guideAtelierText: "Building electrical work is our speciality, alongside renovation and improvements to your spaces.",
+    guideAtelierItem1: "Install or renovate panels, circuits, sockets and lighting",
+    guideAtelierItem2: "Renovate a room and complete the finishing work",
+    guideAtelierItem3: "Plan a broader building project",
+    guideAtelierLink: "Explore Atelier d’Arc services",
+    guideHyperRole: "CONNECT & CONTROL",
+    guideHyperTitle: "You want better control of your building.",
+    guideHyperText: "Building management systems (BMS), automation and supervision bring your equipment together in one clear view.",
+    guideHyperItem1: "Automate controls and operating scenarios",
+    guideHyperItem2: "Centralize statuses, alarms and supervision",
+    guideHyperItem3: "Monitor consumption and support EBO integration",
+    guideHyperLink: "Explore Hypervision services",
+    guideTogetherTitle: "Does your project need both building work and controls?",
+    guideTogetherText: "Both services can work together, from electrical installation to automation. Describe the whole project and we will define the appropriate scope with you.",
+    guideTogetherLink: "Discuss the whole project",
+    guideHeroLink: "Which service fits? Atelier d’Arc or Hypervision →",
     navHome: "Home",
     navActions: "Pillars",
     navServices: "Services",
@@ -10,13 +31,13 @@ const translations = {
     navContact: "Contact",
     diagnosticCta: "Technical assessment",
     menuLabel: "Open navigation",
-    heroKicker: "Electrical engineering, BMS and supervision",
+    heroKicker: "BMS, automation & supervision",
     heroTitle: "Smarter buildings, better controlled and more efficient.",
     heroSubtitle:
-      "Hypervision integrates electrical systems, BMS and supervision to make buildings clearer, controllable and efficient.",
+      "Hypervision connects your equipment, automates controls and centralizes statuses, alarms and consumption for better building management.",
     heroPrimary: "Request an assessment",
     heroSecondary: "View interactive demo",
-    signalElectrical: "Electrical",
+    signalElectrical: "Automation",
     signalBms: "BMS / BEMS",
     signalSupervision: "Supervision",
     heroDemoKicker: "Supervision interface",
@@ -37,7 +58,7 @@ const translations = {
     servicesEyebrow: "Services",
     servicesTitle: "Six fields of expertise for a clearer building.",
     serviceElectricalTitle: "Technical electrical work",
-    serviceElectricalText: "Electrical installations and renovations designed for operation.",
+    serviceElectricalText: "Electrical work for technical equipment, its controls and integration within the building.",
     serviceBmsTitle: "BMS / BEMS",
     serviceBmsText: "Centralized control of the building's technical systems.",
     serviceSupervisionTitle: "Supervision",
@@ -95,7 +116,7 @@ const translations = {
     contactEyebrow: "Contact",
     contactTitle: "Let's discuss your technical project.",
     contactText:
-      "Installation, renovation, BMS, supervision or EBO assistance: describe your need and we will reply with a first clear analysis.",
+      "BMS, automation, supervision, energy monitoring or EBO assistance: describe your need and we will reply with a first clear analysis.",
     contactCta: "Request a technical assessment",
     formName: "Name",
     formCompany: "Company",
@@ -113,24 +134,22 @@ const translations = {
     formSubmit: "Send by email",
     formFallback:
       "No backend is configured: submission opens your email client. You can also write to",
-    footerTagline: "Electrical engineering, BMS and supervision for smart buildings.",
+    footerTagline: "BMS, automation and building supervision.",
     footerCountry: "France",
     footerRights: "All rights reserved."
   }
 };
 
 const metaByLanguage = {
-  fr: {
-    title: "Hypervision - \u00c9lectricit\u00e9, GTB et supervision pour b\u00e2timents intelligents",
-    description:
-      "Hypervision con\u00e7oit et int\u00e8gre des solutions d'\u00e9lectricit\u00e9 technique, GTB, supervision, automatisation et suivi \u00e9nerg\u00e9tique pour rendre les b\u00e2timents plus lisibles et performants.",
-    locale: "fr_FR"
+  "fr": {
+    "title": "Hypervision — GTB, automatisation et supervision du bâtiment",
+    "description": "Hypervision Solutions : GTB, automatisation, supervision et suivi énergétique. Une même entreprise avec Atelier d’Arc, spécialiste de l’électricité et de la rénovation.",
+    "locale": "fr_FR"
   },
-  en: {
-    title: "Hypervision - Electrical engineering, BMS and supervision for smart buildings",
-    description:
-      "Hypervision designs and integrates electrical, BMS, supervision, automation and energy monitoring solutions for professional smart buildings.",
-    locale: "en_US"
+  "en": {
+    "title": "Hypervision — BMS, automation and building supervision",
+    "description": "Hypervision Solutions: BMS, automation, supervision and energy monitoring. One company with Atelier d’Arc, specializing in electrical work and renovation.",
+    "locale": "en_US"
   }
 };
 
