@@ -1,5 +1,7 @@
 const translations = {
   en: {
+    partnersLink: "Architects, property managers, integrators: explore our partner services →",
+    partnersFooter: "Professional partners",
     guideEyebrow: "ONE COMPANY, TWO AREAS OF EXPERTISE",
     guideTitle: "Which service fits your project?",
     guideIntro: "Atelier d’Arc and Hypervision Solutions are two service brands of the same company. Start with the one that matches your needs.",

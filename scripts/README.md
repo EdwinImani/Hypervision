@@ -16,3 +16,18 @@ Le générateur met à jour les pages, QR de contact et cartes HTML autonomes. L
 Les PDF V2 sont les exemplaires approuvés, sans modification de contenu. Les QR des PDF conduisent aux pages publiques ; les QR des cartes numériques contiennent directement les coordonnées. Les visuels PNG montrent le recto et le verso imprimés V2. Les fichiers PDF V1 restent accessibles sous les dossiers `downloads/archives/` de chaque marque.
 
 Avant publication : vérifier les deux pages à 320, 390 et 1024 pixels, les liens réciproques, les téléchargements, le décodage des deux QR et l’identité des coordonnées entre VCF, QR et HTML hors ligne. Vérifier que les PDF archivés sont inchangés.
+
+# Partenaires professionnels
+
+La page commune `/partenaires/` utilise `assets/partners.css`. Elle est accessible depuis le guide des deux expertises et les pieds de page des deux sites. Les nouveaux libellés de la page Hypervision sont aussi traduits en anglais dans `script.js` ; la page partenaires est en français.
+
+La fiche téléchargeable `downloads/Hypervision-Atelier-dArc-partenaires.pdf` se régénère avec :
+
+```sh
+python3 -m pip install reportlab 'fonttools[woff]' qrcode
+python3 scripts/build_partner_sheet.py
+```
+
+Le générateur embarque Inter à partir des polices WOFF2 déjà présentes, crée un PDF A4 d’une page avec téléphone cliquable et QR vers `/partenaires/`. L’option `--output chemin.pdf` permet d’écrire ailleurs. Après modification, rendre le PDF en image, vérifier sa lisibilité et décoder son QR avant publication.
+
+La prise de contact passe par appel ou SMS ; aucune soumission de formulaire, collecte automatique ou prospection n’est ajoutée. Pour mesurer l’utilité de la page, compter manuellement les demandes identifiées « partenaire » et les suites données sur 30 jours après diffusion. Les compétences proviennent des sites existants ; aucune zone d’intervention, disponibilité garantie, certification ou référence client n’est présumée.
