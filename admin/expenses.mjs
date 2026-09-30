@@ -1,0 +1,34 @@
+// Internal expense records. VAT is transcribed from receipts, never treated as deductible automatically.
+export const categories={materials:'Matériaux & fournitures',tools:'Outillage & équipement',travel:'Transport & déplacement',meals:'Repas',lodging:'Hébergement',software:'Logiciels & abonnements',insurance:'Assurance',other:'Autres frais'};
+export const activities={hypervision:'Hypervision Solutions',atelier:'Atelier d’Arc',shared:'Frais communs'};
+export const MAX_FILE=5*1024*1024,MAX_RECEIPTS=5,MAX_TOTAL=50*1024*1024;
+export const dateOK=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFinite(Date.parse(s))&&new Date(s).toISOString().slice(0,10)===s;
+export function cents(value,{optional=false}={}){const s=String(value??'').trim().replace(',','.');if(optional&&s==='')return null;if(!/^\d{1,8}(\.\d{1,2})?$/.test(s))throw new Error('Saisissez un montant positif en euros, avec deux décimales au maximum.');const [a,b='']=s.split('.');return Number(a)*100+Number(b.padEnd(2,'0'));}
+export const decimal=n=>n===null?'':(n/100).toFixed(2);
+export function newExpense(date){return {id:crypto.randomUUID(),date,brand:'shared',category:'materials',supplier:'',description:'',project:'',total:0,vat:null,payer:'company',person:'',reimbursedDate:'',notes:'',receipts:[],createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};}
+export const reference=x=>'FRA-'+x.id;
+export function validateExpense(x){
+ if(!x||typeof x.id!=='string'||! /^[a-f0-9-]{36}$/i.test(x.id)||!dateOK(x.date)||!Object.hasOwn(activities,x.brand)||!Object.hasOwn(categories,x.category)||!['company','personal'].includes(x.payer))throw new Error('Frais : date, activité ou catégorie invalide.');
+ for(const k of ['supplier','description','project','person','notes','createdAt','updatedAt','reimbursedDate'])if(typeof x[k]!=='string'||x[k].length>3000)throw new Error('Fiche de frais incomplète ou trop longue.');
+ if(!x.supplier.trim()||!x.description.trim())throw new Error('Renseignez le fournisseur et le motif professionnel.');
+ if(!Number.isSafeInteger(x.total)||x.total<=0||x.total>9999999999||!(x.vat===null||Number.isSafeInteger(x.vat)&&x.vat>=0&&x.vat<=x.total))throw new Error('Vérifiez le TTC et la TVA indiquée : la TVA ne peut pas dépasser le TTC.');
+ if(x.payer==='personal'&&!x.person.trim())throw new Error('Indiquez la personne ayant avancé les frais.');
+ if(x.reimbursedDate&&(!dateOK(x.reimbursedDate)||x.reimbursedDate<x.date||x.payer!=='personal'))throw new Error('Vérifiez la date de remboursement et le payeur.');
+ if(!Array.isArray(x.receipts)||x.receipts.length>MAX_RECEIPTS)throw new Error('Maximum cinq justificatifs par dépense.');
+ const ids=new Set();for(const r of x.receipts){validateReceipt(r);if(ids.has(r.id))throw new Error('Justificatif en double.');ids.add(r.id);}return x;
+}
+export function validateExpenses(list){if(!Array.isArray(list)||list.length>10000)throw new Error('Liste de frais invalide.');const ids=new Set();let size=0;for(const x of list){validateExpense(x);if(ids.has(x.id))throw new Error('Identifiant de frais en double.');ids.add(x.id);size+=x.receipts.reduce((n,r)=>n+r.size,0);}if(size>MAX_TOTAL)throw new Error('Limite de 50 Mo de justificatifs atteinte dans ce coffre.');return list;}
+export function bytesFromBase64(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}
+export function base64(bytes){let out='';for(let i=0;i<bytes.length;i+=32768)out+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(out);}
+export function detectType(b){if(b[0]===0x25&&b[1]===0x50&&b[2]===0x44&&b[3]===0x46&&b[4]===0x2d)return 'application/pdf';if(b[0]===0xff&&b[1]===0xd8&&b[2]===0xff)return 'image/jpeg';if([137,80,78,71,13,10,26,10].every((v,i)=>b[i]===v))return 'image/png';if(String.fromCharCode(...b.subarray(0,4))==='RIFF'&&String.fromCharCode(...b.subarray(8,12))==='WEBP')return 'image/webp';throw new Error('Formats acceptés : PDF, JPEG, PNG ou WebP. Convertissez les photos HEIC avant ajout.');}
+export function safeName(name){return String(name).replace(/[\/\\\x00-\x1f<>:"|?*]/g,'_').slice(-150)||'justificatif';}
+export function validateReceipt(r){
+ if(!r||typeof r.id!=='string'||! /^[a-f0-9-]{36}$/i.test(r.id)||typeof r.name!=='string'||r.name!==safeName(r.name)||!Number.isSafeInteger(r.size)||r.size<=0||r.size>MAX_FILE||typeof r.content!=='string'||r.content.length>Math.ceil(MAX_FILE/3)*4||!/^[A-Za-z0-9+/]*={0,2}$/.test(r.content)||r.content.length%4!==0)throw new Error('Justificatif invalide (5 Mo maximum par fichier).');
+ const b=bytesFromBase64(r.content);if(b.length!==r.size||detectType(b)!==r.type)throw new Error('Le contenu du justificatif ne correspond pas à son format.');return r;
+}
+export async function receiptFromFile(file){if(!file.size||file.size>MAX_FILE)throw new Error('Chaque justificatif doit peser entre 1 octet et 5 Mo.');const b=new Uint8Array(await file.arrayBuffer()),type=detectType(b),ext={'application/pdf':'pdf','image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[type];return validateReceipt({id:crypto.randomUUID(),name:safeName(file.name.replace(/\.[^.]*$/,'')+'.'+ext),type,size:b.length,content:base64(b)});}
+export function filterExpenses(list,{month='',brand='',status='',search=''}={}){const q=search.trim().toLocaleLowerCase('fr');return list.filter(x=>(!month||x.date.slice(0,7)===month)&&(!brand||x.brand===brand)&&(!status||(status==='missing'?!x.receipts.length:status==='pending'?x.payer==='personal'&&!x.reimbursedDate:status==='reimbursed'?!!x.reimbursedDate:true))&&(!q||`${x.supplier} ${x.description} ${x.project} ${x.person}`.toLocaleLowerCase('fr').includes(q))).sort((a,b)=>b.date.localeCompare(a.date)||b.createdAt.localeCompare(a.createdAt));}
+export function expenseTotals(list){return list.reduce((t,x)=>({total:t.total+x.total,vat:t.vat+(x.vat??0),unknownVAT:t.unknownVAT+(x.vat===null?1:0),pending:t.pending+(x.payer==='personal'&&!x.reimbursedDate?x.total:0),missing:t.missing+(!x.receipts.length?1:0)}),{total:0,vat:0,unknownVAT:0,pending:0,missing:0});}
+const csvCell=v=>'"'+String(v??'').replace(/^[\s]*[=+@-]/,m=>"'"+m).replace(/"/g,'""')+'"';
+export const receiptPath=(x,r)=>`justificatifs/${reference(x)}/${r.id}-${safeName(r.name)}`;
+export function expenseCSV(list){const rows=[['Référence','Date','Activité','Catégorie','Fournisseur','Motif','Chantier / projet','TTC EUR','TVA indiquée EUR (non validée)','HT EUR si TVA renseignée','Payé par','Avanceur','Remboursé le','Justificatifs','Notes']];for(const x of list)rows.push([reference(x),x.date,activities[x.brand],categories[x.category],x.supplier,x.description,x.project,decimal(x.total).replace('.',','),decimal(x.vat).replace('.',','),x.vat===null?'':decimal(x.total-x.vat).replace('.',','),x.payer==='personal'?'Avance personnelle':'Entreprise',x.person,x.reimbursedDate,x.receipts.map(r=>receiptPath(x,r)).join(' | '),x.notes]);return '\uFEFF'+rows.map(row=>row.map(csvCell).join(';')).join('\r\n');}

@@ -1,0 +1,23 @@
+import 'fake-indexeddb/auto';import test from 'node:test';import assert from 'node:assert/strict';
+import {defaults,createDraft} from '../admin/core.mjs';import {newExpense,receiptFromFile} from '../admin/expenses.mjs';import {readStored,writeStored} from '../admin/storage.mjs';
+const store=new Map();globalThis.localStorage={getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)};
+const vault=await import('../admin/vault.mjs');const password='test-only-expense-passphrase';
+async function oldEnvelope(){const data=defaults();data.schema=1;delete data.expenses;data.revision=1;data.documents.push({...createDraft(),type:'invoice'});const enc=new TextEncoder(),salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),material=await crypto.subtle.importKey('raw',enc.encode(password),'PBKDF2',false,['deriveKey']),key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},material,{name:'AES-GCM',length:256},false,['encrypt']),ciphertext=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:enc.encode('hypervision-vault-v1')},key,enc.encode(JSON.stringify(data)));return {format:'hypervision-vault-v1',iterations:600000,salt:Buffer.from(salt).toString('base64'),iv:Buffer.from(iv).toString('base64'),revision:1,ciphertext:Buffer.from(ciphertext).toString('base64')};}
+test('legacy migration, encrypted receipts, backup restore, passwords, concurrency and interrupted save',async()=>{
+ const legacy=await oldEnvelope();localStorage.setItem(vault.storageKey,JSON.stringify(legacy));
+ await assert.rejects(vault.unlock('wrong',password));await assert.rejects(vault.unlock('admin','bad-password'));
+ const data=await vault.unlock('admin',password);assert.equal(data.schema,2);assert.equal(data.documents[0].type,'invoice');assert.equal((await readStored()).format,'hypervision-vault-v2');assert.equal(JSON.parse(localStorage.getItem(vault.storageKey)).format,'hypervision-vault-v2-indexeddb');
+ const x={...newExpense('2026-09-30'),supplier:'Private supplier',description:'Confidential purpose',total:1000,receipts:[await receiptFromFile(new File(['%PDF-1.4\nprivate receipt'],'private.pdf'))]};data.expenses.push(x);await vault.save(data);const backup=await vault.backup();for(const text of ['Private supplier','Confidential purpose','private.pdf','private receipt',password])assert.ok(!backup.includes(text));
+ vault.lock();await assert.rejects(vault.save(data));await assert.rejects(vault.inspectBackup(backup,'bad-password'));
+ const checked=await vault.inspectBackup(backup,password);const restored=await vault.restore(checked);assert.deepEqual(restored.expenses,[x]);assert.equal(atob(restored.expenses[0].receipts[0].content),'%PDF-1.4\nprivate receipt');
+ await vault.changePassword(restored,password,'new-test-passphrase');vault.lock();await assert.rejects(vault.unlock('admin',password));const changed=await vault.unlock('admin','new-test-passphrase');assert.deepEqual(changed.expenses,[x]);
+ const before=await vault.backup();const pending=vault.save(changed);vault.lock();await assert.rejects(pending,/verrouillé/);assert.equal(await vault.backup(),before);
+ await vault.unlock('admin','new-test-passphrase');const current=await readStored();await writeStored(current.iv,{...current,iv:'AAAAAAAAAAAAAAAA'});await assert.rejects(vault.save(changed),/autre onglet/);
+ // Restore old format explicitly; ensure it produces the new format without losing archived invoices.
+ const old=await vault.inspectBackup(JSON.stringify(legacy),password);const migrated=await vault.restore(old);assert.equal(migrated.documents[0].type,'invoice');assert.equal(migrated.schema,2);assert.equal((await readStored()).format,'hypervision-vault-v2');
+ // Receipts can exceed the old Web Storage capacity and still round-trip in one backup.
+ const large=new Uint8Array(3*1024*1024);large.set(new TextEncoder().encode('%PDF-1.4\n'));const largeReceipt=await receiptFromFile(new File([large],'large.pdf'));
+ migrated.expenses.push({...newExpense('2026-09-30'),supplier:'Volume test',description:'Test de stockage',total:100,receipts:[largeReceipt,{...largeReceipt,id:crypto.randomUUID(),name:'second.pdf'}]});await vault.save(migrated);const largeBackup=await vault.backup();assert.ok(largeBackup.length>5*1024*1024);const largeChecked=await vault.inspectBackup(largeBackup,password);assert.equal(largeChecked.data.expenses[0].receipts.reduce((n,r)=>n+r.size,0),6*1024*1024);
+ // IndexedDB CAS permits only one of two concurrent saves.
+ const same=await readStored();const results=await Promise.allSettled([writeStored(same.iv,{...same,iv:'BBBBBBBBBBBBBBBB'}),writeStored(same.iv,{...same,iv:'CCCCCCCCCCCCCCCC'})]);assert.equal(results.filter(x=>x.status==='fulfilled').length,1);
+});

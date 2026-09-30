@@ -1,5 +1,5 @@
 import {fonts} from './pdf-fonts.mjs';
-import {totals,lineTotals,money} from './core.mjs';
+import {totals,lineTotals,money} from './core.mjs?v=20260930-expenses';
 export function buildPDF(d,c,client,PDF=globalThis.jspdf?.jsPDF){
   if(!PDF)throw new Error('Le module PDF n’est pas disponible. Rechargez la page.');
   const pdf=new PDF({unit:'mm',format:'a4',compress:true});
