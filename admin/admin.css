@@ -10,3 +10,6 @@
 @media(max-width:380px){.stat-grid{grid-template-columns:1fr}.actions .button{white-space:normal}.topbar{flex-wrap:wrap;height:auto;min-height:60px;padding-block:10px}.expense-filters label{flex-basis:100%}}
 
 @media(max-width:800px){.sidebar nav{flex-wrap:wrap;overflow:visible}.sidebar nav button{white-space:normal}}
+
+/* Persistent file-copy status, outside forms so saves never discard edits. */
+.disk-notice{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;margin:20px 38px 0;border:1px solid #d6e2f8;border-radius:10px;background:#f0f5fe;color:#496486;font-size:12px}.disk-notice p{margin-top:4px}.disk-notice strong{font-size:13px}.disk-notice>div{min-width:0}.disk-notice .actions{flex-shrink:0}.disk-warning{background:#fff8ec;border-color:#f3e3c6;color:#805b22}.disk-file{overflow-wrap:anywhere;font-size:11px}[data-disk-panel]{display:grid;gap:12px;overflow-wrap:anywhere}@media(max-width:1100px){.disk-notice{align-items:flex-start;flex-direction:column}}@media(max-width:800px){.disk-notice{margin:16px 20px 0;padding:16px}.disk-notice .actions{width:100%}.disk-notice .button{white-space:normal}}@media print{.disk-notice{display:none}}

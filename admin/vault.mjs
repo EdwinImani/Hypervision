@@ -1,6 +1,7 @@
 import {defaults,validateData} from './core.mjs?v=20260930-expenses';
 import {bootstrap} from './bootstrap.mjs';
-import {readStored,writeStored} from './storage.mjs?v=20260930-expenses';
+import {readStored,writeStored} from './storage.mjs?v=20260930-mac';
+import {diskBackup} from './disk-backup.mjs?v=20260930-mac';
 import {base64 as b64,bytesFromBase64 as bytes} from './expenses.mjs?v=20260930-expenses';
 const STORE='hypervision-studio-v1',ITERATIONS=600000,FORMAT='hypervision-vault-v2',MAX_BACKUP=110*1024*1024,enc=new TextEncoder(),dec=new TextDecoder();
 let key=null,salt=null,revision=0,token=null,epoch=0;
@@ -20,17 +21,17 @@ export async function unlock(username,password){
  if(stored||old){validateData(data);if(data.revision!==envelope.revision)throw new Error('Révision du coffre invalide.');}else{if(data.magic!=='hypervision-local-vault-v1')throw new Error('Initialisation impossible.');data=defaults();envelope.salt=b64(crypto.getRandomValues(new Uint8Array(16)));k=await derive(password,envelope.salt);}
  key=k;salt=envelope.salt;revision=stored?envelope.revision:0;token=stored?.iv??null;
  if(!stored){if(localStorage.getItem(STORE)!==oldRaw){lock();throw new Error('Le coffre a changé. Reconnectez-vous.');}try{await save(data,{legacyRaw:oldRaw});}catch(e){lock();throw e;}}
- return data;
+ await diskBackup.sync();return data;
 }
 export async function save(data,migration=null){
  if(!key)throw new Error('L’espace est verrouillé.');validateData(data);const generation=epoch,expected=token,k=key,s=salt,next=revision+1,copy=structuredClone(data);copy.revision=next;
  if(!Number.isSafeInteger(next))throw new Error('Révision du coffre invalide.');
  const e=await encrypt(copy,k,s,next);if(JSON.stringify(e).length>MAX_BACKUP)throw new Error('Coffre trop volumineux pour une sauvegarde complète (110 Mo).');if(generation!==epoch||!key)throw new Error('Enregistrement annulé : espace verrouillé.');
  if(migration&&localStorage.getItem(STORE)!==migration.legacyRaw)throw new Error('Le coffre a changé pendant la migration. Reconnectez-vous.');
- await writeStored(expected,e);if(generation!==epoch)throw new Error('Espace verrouillé pendant l’enregistrement. Reconnectez-vous.');token=e.iv;revision=next;data.revision=next;signal(e);
+ await writeStored(expected,e);if(generation!==epoch)throw new Error('Espace verrouillé pendant l’enregistrement. Reconnectez-vous.');token=e.iv;revision=next;data.revision=next;signal(e);await diskBackup.sync();
 }
 export async function backup(){const e=await readStored();if(!e)throw new Error('Aucun coffre à exporter.');return JSON.stringify(e);}
 export async function inspectBackup(text,password){if(text.length>MAX_BACKUP)throw new Error('Sauvegarde trop volumineuse (110 Mo maximum).');const expected=await readStored(),e=validateEnvelope(JSON.parse(text)),k=await derive(password,e.salt);let data;try{data=validateData(await decrypt(e,k));if(data.revision!==e.revision)throw new Error('Révision invalide.');}catch{throw new Error('Mot de passe incorrect ou sauvegarde invalide.');}return {envelope:e,data,key:k,expectedIV:expected?.iv??null};}
-export async function restore(checked){const e=await encrypt(checked.data,checked.key,checked.envelope.salt,checked.data.revision);await writeStored(checked.expectedIV,e);lock();key=checked.key;salt=e.salt;revision=e.revision;token=e.iv;signal(e);return checked.data;}
+export async function restore(checked){const e=await encrypt(checked.data,checked.key,checked.envelope.salt,checked.data.revision);await writeStored(checked.expectedIV,e);lock();key=checked.key;salt=e.salt;revision=e.revision;token=e.iv;signal(e);await diskBackup.sync();return checked.data;}
 export async function changePassword(data,oldPassword,newPassword){const current=validateEnvelope(JSON.parse(await backup()));if(current.iv!==token)throw new Error('Le coffre a changé. Reconnectez-vous.');try{await decrypt(current,await derive(oldPassword,current.salt));}catch{throw new Error('Le mot de passe actuel est incorrect.');}const generation=epoch,nextSalt=b64(crypto.getRandomValues(new Uint8Array(16))),nextKey=await derive(newPassword,nextSalt);if(generation!==epoch)throw new Error('L’espace est verrouillé.');const oldKey=key,oldSalt=salt;key=nextKey;salt=nextSalt;try{await save(data);}catch(e){if(generation===epoch){key=oldKey;salt=oldSalt;}throw e;}}
 export const storageKey=STORE;
