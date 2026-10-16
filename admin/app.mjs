@@ -1,7 +1,7 @@
 import {defaults,createDraft,totals,lineTotals,money,today,uid,issue,issueErrors} from './core.mjs?v=20260930-expenses';
 import * as vault from './vault.mjs?v=20260930-mac';
 import {diskBackup} from './disk-backup.mjs?v=20260930-mac';
-import {buildPDF} from './pdf.mjs';
+import {buildPDF} from './pdf.mjs?v=20261016-brand';
 import {expenseUI} from './expense-ui.mjs?v=20260930-expenses';
 const $=s=>document.querySelector(s),e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const brands={hypervision:'Hypervision Solutions',atelier:'Atelier d’Arc'},labels={overview:'Vue d’ensemble',quotes:'Devis',expenses:'Frais & justificatifs',archives:'Archives antérieures',clients:'Clients',settings:'Paramètres'};
