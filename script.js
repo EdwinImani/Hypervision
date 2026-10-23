@@ -31,13 +31,12 @@ const translations = {
     navMethod: "Method",
     navTrust: "Trust",
     navContact: "Contact",
-    diagnosticCta: "Technical assessment",
+    inquiryCta: "Describe my project",
     menuLabel: "Open navigation",
     heroKicker: "BMS, automation & supervision",
     heroTitle: "Smarter buildings, better controlled and more efficient.",
     heroSubtitle:
       "Hypervision connects your equipment, automates controls and centralizes statuses, alarms and consumption for better building management.",
-    heroPrimary: "Request an assessment",
     heroSecondary: "View interactive demo",
     signalElectrical: "Automation",
     signalBms: "BMS / BEMS",
@@ -118,24 +117,22 @@ const translations = {
     contactEyebrow: "Contact",
     contactTitle: "Let's discuss your technical project.",
     contactText:
-      "BMS, automation, supervision, energy monitoring or EBO assistance: describe your need and we will reply with a first clear analysis.",
-    contactCta: "Request a technical assessment",
-    formName: "Name",
-    formCompany: "Company",
-    formEmail: "Email",
-    formPhone: "Phone",
-    formNeed: "Type of need",
-    formNeedPlaceholder: "Select the main need",
-    formOptionElectrical: "Technical electrical work",
-    formOptionBms: "BMS / supervision",
-    formOptionAutomation: "Automation",
-    formOptionEnergy: "Energy monitoring",
-    formOptionEbo: "EBO / integrator assistance",
-    formOptionOther: "Other technical request",
-    formMessage: "Message",
-    formSubmit: "Send by email",
-    formFallback:
-      "No backend is configured: submission opens your email client. You can also write to",
+      "BMS, automation, supervision, energy monitoring or EBO assistance: describe your project and its constraints to prepare an initial conversation.",
+    contactDirectTitle: "Prefer to contact us directly?",
+    contactCall: "Call us",
+    contactSms: "Send a text message",
+    contactDirectNote: "You can also copy this address into your email app.",
+    inquiryEyebrow: "Your enquiry",
+    inquiryTitle: "Five details to get started.",
+    inquiryIntro: "A short form to share the information we need about your project.",
+    inquiryName: "Your name",
+    inquiryContact: "Your phone number or email",
+    inquiryTown: "The town where the project is located",
+    inquiryNeed: "A few words about what you need",
+    inquiryAvailability: "Your availability for a conversation",
+    inquiryDestination: "The form opens in Google Forms. You can submit your enquiry there.",
+    inquiryPrivacy: "Your responses are not published. We use the information you provide only to handle your enquiry, with no marketing follow-up. The form is hosted by Google.",
+    inquiryPrivacyLink: "Google Privacy Policy",
     footerTagline: "BMS, automation and building supervision.",
     footerCountry: "France",
     footerRights: "All rights reserved."
@@ -235,7 +232,6 @@ const yearElement = document.getElementById("year");
 const revealElements = document.querySelectorAll(".reveal");
 const demoRoots = document.querySelectorAll("[data-smart-demo]");
 const demoControls = document.querySelectorAll("[data-demo-control]");
-const leadForm = document.querySelector(".lead-form");
 
 let currentLanguage = "fr";
 
@@ -439,48 +435,6 @@ window.addEventListener("hashchange", () => {
   window.setTimeout(revealVisibleElements, 120);
 });
 window.setTimeout(revealVisibleElements, 250);
-
-if (leadForm) {
-  leadForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const contactEmail = "contact@hypervision-solution.fr";
-    const submitButton = leadForm.querySelector(".form-submit");
-    const formData = new FormData(leadForm);
-    const needSelect = leadForm.querySelector("#need");
-    const needLabel = needSelect?.selectedOptions?.[0]?.textContent.trim() || "";
-    const name = formData.get("name") || "";
-    const company = formData.get("company") || "";
-    const email = formData.get("email") || "";
-    const phone = formData.get("phone") || "";
-    const message = formData.get("message") || "";
-    const subjectPrefix = currentLanguage === "fr" ? "Demande de diagnostic technique" : "Technical assessment request";
-    const subjectDetail = company || name || "Hypervision";
-    const subject = `${subjectPrefix} - ${subjectDetail}`;
-    const bodyLabels =
-      currentLanguage === "fr"
-        ? ["Nom", "Entreprise", "Email", "T\u00e9l\u00e9phone", "Besoin", "Message"]
-        : ["Name", "Company", "Email", "Phone", "Need", "Message"];
-    const body = [
-      `${bodyLabels[0]}: ${name}`,
-      `${bodyLabels[1]}: ${company}`,
-      `${bodyLabels[2]}: ${email}`,
-      `${bodyLabels[3]}: ${phone}`,
-      `${bodyLabels[4]}: ${needLabel}`,
-      "",
-      `${bodyLabels[5]}:`,
-      message
-    ].join("\n");
-
-    if (submitButton) {
-      submitButton.textContent = currentLanguage === "fr" ? "Ouverture de l'email..." : "Opening email...";
-      window.setTimeout(() => {
-        submitButton.textContent = currentLanguage === "fr" ? submitButton.dataset.frText : translations.en.formSubmit;
-      }, 1800);
-    }
-
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-}
 
 let initialLanguage = "fr";
 try {

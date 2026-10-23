@@ -34,7 +34,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261023-r2" />
     <link rel="stylesheet" href="assets/service-guide.css" />
       <link rel="canonical" href="https://www.hypervision-solution.fr/"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://www.hypervision-solution.fr/#organization", "name": "Hypervision Solutions", "url": "https://www.hypervision-solution.fr/", "subOrganization": {"@id": "https://www.hypervision-solution.fr/atelierdarc/#business"}}</script>
   </head>
@@ -56,7 +56,7 @@
           <a href="#confiance" data-i18n="navTrust">Confiance</a>
           <a href="#contact" data-i18n="navContact">Contact</a>
           <a class="atelier-link" href="/atelierdarc/">Atelier d’Arc <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-primary nav-mobile-cta" href="#contact" data-i18n="diagnosticCta">Diagnostic technique</a>
+          <a class="btn btn-primary nav-mobile-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zMCpKoXE4PQv0Hb_4swf68fwhIEshXC2OxcMP_kGJmOghg/viewform?usp=header" data-inquiry-form-link data-i18n="inquiryCta">Décrire mon projet</a>
         </div>
 
         <div class="header-actions">
@@ -64,7 +64,7 @@
             <button class="lang-btn is-active" type="button" data-lang="fr" aria-pressed="true">FR</button>
             <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
-          <a class="btn btn-primary nav-cta" href="#contact" data-i18n="diagnosticCta">Diagnostic technique</a>
+          <a class="btn btn-primary nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zMCpKoXE4PQv0Hb_4swf68fwhIEshXC2OxcMP_kGJmOghg/viewform?usp=header" data-inquiry-form-link data-i18n="inquiryCta">Décrire mon projet</a>
           <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
             <span class="menu-line"></span>
             <span class="menu-line"></span>
@@ -85,7 +85,7 @@
               Hypervision connecte vos équipements, automatise les commandes et centralise les états, les alarmes et les consommations pour mieux piloter votre bâtiment.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact" data-i18n="heroPrimary">Demander un diagnostic</a>
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zMCpKoXE4PQv0Hb_4swf68fwhIEshXC2OxcMP_kGJmOghg/viewform?usp=header" data-inquiry-form-link data-i18n="inquiryCta">Décrire mon projet</a>
               <a class="btn btn-secondary" href="#demo" data-i18n="heroSecondary">Voir la d&eacute;mo interactive</a>
             </div>
             <div class="hero-signals" aria-label="Expertises cl&eacute;s">
@@ -574,58 +574,50 @@
         </div>
       </section>
 
-      <section class="section contact-section" id="contact">
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
         <div class="container contact-grid">
           <div class="contact-copy reveal">
             <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
-            <h2 data-i18n="contactTitle">Parlons de votre projet technique.</h2>
+            <h2 id="contact-title" data-i18n="contactTitle">Parlons de votre projet technique.</h2>
             <p data-i18n="contactText">
-              GTB, automatisation, supervision, suivi énergétique ou assistance EBO : d&eacute;crivez votre besoin, nous vous r&eacute;pondons avec une premi&egrave;re analyse claire.
+              GTB, automatisation, supervision, suivi énergétique ou assistance EBO : décrivez votre projet et ses contraintes pour préparer un premier échange.
             </p>
-            <a class="btn btn-primary" href="#lead-form" data-i18n="contactCta">Demander un diagnostic technique</a>
+            <div class="contact-direct">
+              <h3 data-i18n="contactDirectTitle">Vous préférez un contact direct ?</h3>
+              <a class="contact-phone" href="tel:+33767690805">07 67 69 08 05</a>
+              <div class="contact-direct-actions">
+                <a class="btn btn-secondary" href="tel:+33767690805" data-i18n="contactCall">Appeler</a>
+                <a class="btn btn-secondary" href="sms:+33767690805" data-i18n="contactSms">Envoyer un SMS</a>
+              </div>
+              <a class="contact-email" href="mailto:hypervisionsolutions@gmail.com">hypervisionsolutions@gmail.com</a>
+              <p class="contact-direct-note" data-i18n="contactDirectNote">Vous pouvez aussi copier cette adresse dans votre messagerie.</p>
+            </div>
           </div>
 
-          <form class="lead-form reveal" id="lead-form" action="mailto:contact@hypervision-solution.fr" method="post" enctype="text/plain">
-            <div class="form-row">
-              <label for="name" data-i18n="formName">Nom</label>
-              <input id="name" name="name" type="text" autocomplete="name" required />
+          <article class="inquiry-panel reveal" aria-labelledby="inquiry-title">
+            <div class="inquiry-heading">
+              <p class="eyebrow" data-i18n="inquiryEyebrow">Votre demande</p>
+              <h3 id="inquiry-title" data-i18n="inquiryTitle">Cinq repères pour bien commencer.</h3>
+              <p data-i18n="inquiryIntro">Un formulaire court pour nous transmettre les informations utiles à votre projet.</p>
             </div>
-            <div class="form-row">
-              <label for="company" data-i18n="formCompany">Entreprise</label>
-              <input id="company" name="company" type="text" autocomplete="organization" />
+            <ol class="inquiry-details" role="list">
+              <li><span class="inquiry-number" aria-hidden="true">01</span><span data-i18n="inquiryName">Votre nom</span></li>
+              <li><span class="inquiry-number" aria-hidden="true">02</span><span data-i18n="inquiryContact">Votre téléphone ou e-mail</span></li>
+              <li><span class="inquiry-number" aria-hidden="true">03</span><span data-i18n="inquiryTown">La commune du projet</span></li>
+              <li><span class="inquiry-number" aria-hidden="true">04</span><span data-i18n="inquiryNeed">Votre besoin en quelques mots</span></li>
+              <li><span class="inquiry-number" aria-hidden="true">05</span><span data-i18n="inquiryAvailability">Vos disponibilités pour échanger</span></li>
+            </ol>
+            <div class="inquiry-action">
+              <a class="btn btn-primary inquiry-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc6zMCpKoXE4PQv0Hb_4swf68fwhIEshXC2OxcMP_kGJmOghg/viewform?usp=header" data-inquiry-form-link aria-describedby="inquiry-destination">
+                <span data-i18n="inquiryCta">Décrire mon projet</span><span aria-hidden="true">→</span>
+              </a>
+              <p id="inquiry-destination" data-i18n="inquiryDestination">Le formulaire s’ouvre sur Google Forms. Vous pourrez y envoyer votre demande.</p>
             </div>
-            <div class="form-row">
-              <label for="email" data-i18n="formEmail">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
+            <div class="inquiry-privacy">
+              <p data-i18n="inquiryPrivacy">Vos réponses ne sont pas publiées. Nous utilisons les informations transmises uniquement pour traiter votre demande, sans prospection commerciale. Le formulaire est hébergé par Google.</p>
+              <a href="https://policies.google.com/privacy" data-i18n="inquiryPrivacyLink">Confidentialité Google</a>
             </div>
-            <div class="form-row">
-              <label for="phone" data-i18n="formPhone">T&eacute;l&eacute;phone</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
-            </div>
-            <div class="form-row form-row-full">
-              <label for="need" data-i18n="formNeed">Type de besoin</label>
-              <select id="need" name="need" required>
-                <option value="" selected disabled data-i18n="formNeedPlaceholder">S&eacute;lectionnez le besoin principal</option>
-                <option value="electricite-technique" data-i18n="formOptionElectrical">&Eacute;lectricit&eacute; technique</option>
-                <option value="gtb-supervision" data-i18n="formOptionBms">GTB / supervision</option>
-                <option value="automatisation" data-i18n="formOptionAutomation">Automatisation</option>
-                <option value="suivi-energetique" data-i18n="formOptionEnergy">Suivi &eacute;nerg&eacute;tique</option>
-                <option value="assistance-ebo" data-i18n="formOptionEbo">Assistance EBO / int&eacute;grateur</option>
-                <option value="autre" data-i18n="formOptionOther">Autre demande technique</option>
-              </select>
-            </div>
-            <div class="form-row form-row-full">
-              <label for="message" data-i18n="formMessage">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            <button class="btn btn-primary form-submit" type="submit" data-i18n="formSubmit">
-              Envoyer par email
-            </button>
-            <p class="form-fallback">
-              <span data-i18n="formFallback">Aucun backend n'est configur&eacute; : l'envoi ouvre votre client email. Vous pouvez aussi &eacute;crire &agrave;</span>
-              <a href="mailto:contact@hypervision-solution.fr">contact@hypervision-solution.fr</a>.
-            </p>
-          </form>
+          </article>
         </div>
       </section>
     </main>
@@ -655,6 +647,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261023-r2"></script>
   </body>
 </html>
